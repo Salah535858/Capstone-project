@@ -1,0 +1,197 @@
+:root {
+  /* Expanded Color Palette */
+  --color-primary: #6a5acd;      /* Slate Blue */
+  --color-secondary: #ff6b6b;    /* Pastel Red */
+  --color-tertiary: #4ecdc4;     /* Turquoise */
+  --color-background-dark: #1a1a2e;  /* Deep Night Blue */
+  --color-background-light: #f4f4f9;  /* Soft Lavender White */
+  
+  /* Gradient Colors */
+  --gradient-primary: linear-gradient(
+    135deg, 
+    var(--color-primary), 
+    color-mix(in srgb, var(--color-primary) 80%, white)
+  );
+  --gradient-secondary: linear-gradient(
+    45deg, 
+    var(--color-secondary), 
+    color-mix(in srgb, var(--color-secondary) 80%, white)
+  );
+
+  /* Typography */
+  --font-primary: 'Inter', 'system-ui', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Shadows and Depth */
+  --shadow-subtle: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-medium: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Global Reset with Colorful Approach */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  background: var(--color-background-dark);
+  background-image: 
+    radial-gradient(
+      rgba(94, 84, 199, 0.2) 0%, 
+      transparent 70%
+    );
+  color: rgba(255,255,255,0.9);
+  overflow-x: hidden;
+}
+
+/* Colorful Typography */
+h1 {
+  font-size: 2.75rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--color-tertiary);
+  font-weight: 700;
+}
+
+/* Vibrant Link Styles */
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  position: relative;
+  font-weight: 600;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--gradient-secondary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Colorful Button Styles */
+button {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-subtle);
+  transition: 
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+  background: var(--gradient-secondary);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Interactive Form Elements */
+input, select {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: gray;
+  padding: 0.75rem;
+  border-radius: 6px;
+  transition: 
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  background: rgba(255,255,255,0.2);
+  border-color: var(--color-tertiary);
+}
+
+/* Light Mode Adjustments */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background-dark: #f4f4f9;
+    color: #333;
+  }
+  
+  body {
+    background: var(--color-background-light);
+    color: #333;
+  }
+
+  h1 {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  a {
+    color: var(--color-primary);
+  }
+
+  button {
+    background: var(--gradient-secondary);
+    color: white;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Tailwind Integration */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Decorative Background Animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-background {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
