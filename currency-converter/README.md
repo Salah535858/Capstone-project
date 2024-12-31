@@ -1,5 +1,5 @@
 # React + Vite
-# Currency Converter 🌍💱
+# Currency Converter
 
 Welcome to the **Currency Converter** app! This handy tool helps you convert between different currencies in real-time, so you’re always in the know when it comes to exchange rates.
 
